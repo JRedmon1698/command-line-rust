@@ -5,3 +5,5 @@ edition = "2024"
 
 [dependencies]
 clap = "4.5"
+assert_cmd = "2"
+predicates = "3"
