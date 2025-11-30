@@ -18,5 +18,12 @@ fn main() {
         )
         .get_matches();
 
-    println!("{:#?}", matches);
+    let mut text_values: Vec<String> = Vec::new();
+    if let Ok(Some(values)) = matches.try_get_many::<String>("text") {
+        for val in values {
+            text_values.push(val.to_string());
+        }
+    }
+
+    println!("text: {:?}", text_values);
 }
