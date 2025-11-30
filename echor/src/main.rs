@@ -19,11 +19,18 @@ fn main() {
         .get_matches();
 
     let mut text_values: Vec<String> = Vec::new();
+    let mut print_suffix = "\n";
+
     if let Ok(Some(values)) = matches.try_get_many::<String>("text") {
         for val in values {
             text_values.push(val.to_string());
         }
     }
 
-    println!("{}", text_values.join(" "));
+    let newline_flag = matches.get_flag("omit_newlines");
+    if newline_flag {
+        print_suffix = " ";
+    }
+
+    println!("{}{}", text_values.join(" "), print_suffix);
 }
