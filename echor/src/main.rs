@@ -19,7 +19,6 @@ fn main() {
         .get_matches();
 
     let mut text_values: Vec<String> = Vec::new();
-    let mut print_suffix = "\n";
 
     if let Ok(Some(values)) = matches.try_get_many::<String>("text") {
         for val in values {
@@ -27,10 +26,9 @@ fn main() {
         }
     }
 
-    let newline_flag = matches.get_flag("omit_newlines");
-    if newline_flag {
-        print_suffix = " ";
-    }
+    let omit_newlines = matches.get_flag("omit_newlines");
+
+    let print_suffix = if omit_newlines { " " } else { "\n" };
 
     println!("{}{}", text_values.join(" "), print_suffix);
 }
