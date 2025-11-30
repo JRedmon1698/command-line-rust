@@ -25,5 +25,5 @@ fn main() {
         }
     }
 
-    println!("text: {:?}", text_values);
+    println!("{}", text_values.join(" "));
 }
